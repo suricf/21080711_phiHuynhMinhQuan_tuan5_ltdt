@@ -5,9 +5,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Screen03 = ({ navigation }) => {
     const [isChecked, setIsChecked] = useState(false);  // Trạng thái checkbox
-    const [user, setUser] = useState('use1');
-    const [email, setEmail] = useState('ngophuc');
-    const [password, setPassword] = useState('a21313');
+    const [user, setUser] = useState('user');
+    const [email, setEmail] = useState('minhquan');
+    const [password, setPassword] = useState('minhquan');
 
     const [info, setInfo] = useState({
         user: '',
