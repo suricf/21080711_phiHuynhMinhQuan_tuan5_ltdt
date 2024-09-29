@@ -19,13 +19,8 @@ const Screen03 = ({ navigation }) => {
         <View >
 
             <View style={{ marginBottom: 20 }}>
-                {/* <Icon
-                    name='arrow-left'
-                    size={24}
-                    color="#000"
-                    onPress={() => { navigation.navigate("Screen01") }}
-                /> */}
-                <Image source={require("../assets/Data/Image 20.png")} style={{ height: 200, width: '100%' }} />
+                
+                <Image source={require("../assets/Data/Image_20.png")} style={{ height: 200, width: '100%' }} />
             </View>
 
 
