@@ -1,11 +1,11 @@
-import Checkbox from 'expo-checkbox';
 import React, { useState } from 'react';
 import { TouchableOpacity, Image, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Screen04 = ({ navigation }) => {
+const Screen04 = ({ navigation, route }) => {
+    const { user, password } = route.params; // Nhận thông tin người dùng từ Screen03
     const [quantity, setQuantity] = useState(2);
-    const [size, setSize] = useState('M'); // Default size
+    const [size, setSize] = useState('M');
 
     const [dataProduct] = useState([
         { key: 1, label: "Product1", price: 2.99, imageProduct: require('../assets/Data/Image7(1).png'), rating: 4.5 },
@@ -20,9 +20,9 @@ const Screen04 = ({ navigation }) => {
         <View style={{ padding: 20 }}>
             {/* Biểu tượng mũi tên và tên sản phẩm */}
             <View style={{ marginBottom: 20, flexDirection: 'row', alignItems: 'center' }}>
-                <TouchableOpacity onPress={() => navigation.navigate("Screen03")}>
-
+                <TouchableOpacity onPress={() => navigation.navigate("Screen03", { user, password })}> {/* Gửi lại user và password khi quay lại */}
                     <Icon name='arrow-left' size={24} color="#000" />
+
                 </TouchableOpacity>
                 <Text style={{ marginLeft: 20, fontSize: 20, fontWeight: '600' }}>{productSelected.label}</Text>
             </View>
@@ -92,8 +92,8 @@ const Screen04 = ({ navigation }) => {
             <TouchableOpacity
                 style={{ backgroundColor: 'rgb(34, 200, 247)', paddingVertical: 15, borderRadius: 20 }}
                 onPress={() => {
-                    console.log(`Added ${quantity} of ${productSelected.label} to cart`);
-                    navigation.navigate("Screen03")
+                    const total = (productSelected.price * quantity).toFixed(2); // Tính tổng tiền
+                    navigation.navigate("Screen05", { product: productSelected, quantity, total, user, password }); // Điều hướng đến Screen05 với thông tin sản phẩm
                 }}
             >
                 <Text style={{ color: 'white', textAlign: 'center', fontSize: 18 }}>Add to Cart</Text>
