@@ -18,16 +18,15 @@ const Screen04 = ({ navigation, route }) => {
 
     return (
         <View style={{ padding: 20 }}>
-            {/* Biểu tượng mũi tên và tên sản phẩm */}
-            <View style={{ marginBottom: 20, flexDirection: 'row', alignItems: 'center' }}>
-                <TouchableOpacity onPress={() => navigation.navigate("Screen03", { user, password })}> {/* Gửi lại user và password khi quay lại */}
-                    <Icon name='arrow-left' size={24} color="#000" />
 
+            <View style={{ marginBottom: 20, flexDirection: 'row', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => navigation.navigate("Screen03", { user, password })}>
+                    <Icon name='arrow-left' size={24} color="#000" />
                 </TouchableOpacity>
                 <Text style={{ marginLeft: 20, fontSize: 20, fontWeight: '600' }}>{productSelected.label}</Text>
             </View>
 
-            {/* Hình ảnh và các biểu tượng sản phẩm */}
+
             <View style={{ alignItems: 'center' }}>
                 <Image source={productSelected.imageProduct} style={{ width: 120, height: 120 }} />
                 <View style={{ flexDirection: 'row', marginTop: 10 }}>
@@ -39,11 +38,9 @@ const Screen04 = ({ navigation, route }) => {
                 </View>
             </View>
 
-            {/* Giá và chương trình khuyến mãi */}
             <Text style={{ fontSize: 24, fontWeight: 'bold', marginVertical: 10 }}>${productSelected.price}</Text>
             <Text style={{ color: 'red', marginBottom: 10 }}>Buy 1 get 1</Text>
 
-            {/* Đánh giá sản phẩm */}
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
                 <Text style={{ marginRight: 5 }}>{productSelected.rating}</Text>
                 {[...Array(Math.round(productSelected.rating))].map((_, index) => (
@@ -51,7 +48,7 @@ const Screen04 = ({ navigation, route }) => {
                 ))}
             </View>
 
-            {/* Chọn size */}
+
             <Text style={{ marginBottom: 5 }}>Size:</Text>
             <View style={{ flexDirection: 'row', marginBottom: 10 }}>
                 {['XS', 'S', 'M', 'L', 'XL'].map((item) => (
@@ -71,7 +68,7 @@ const Screen04 = ({ navigation, route }) => {
                 ))}
             </View>
 
-            {/* Số lượng sản phẩm */}
+
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
                 <Text>Quantity:</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -85,15 +82,15 @@ const Screen04 = ({ navigation, route }) => {
                 </View>
             </View>
 
-            {/* Tổng số tiền */}
+
             <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 20 }}>Total: ${(productSelected.price * quantity).toFixed(2)}</Text>
 
-            {/* Nút "Add to cart" */}
+
             <TouchableOpacity
                 style={{ backgroundColor: 'rgb(34, 200, 247)', paddingVertical: 15, borderRadius: 20 }}
                 onPress={() => {
-                    const total = (productSelected.price * quantity).toFixed(2); // Tính tổng tiền
-                    navigation.navigate("Screen05", { product: productSelected, quantity, total, user, password }); // Điều hướng đến Screen05 với thông tin sản phẩm
+                    const total = (productSelected.price * quantity).toFixed(2);
+                    navigation.navigate("Screen05", { product: productSelected, quantity, total, user, password });
                 }}
             >
                 <Text style={{ color: 'white', textAlign: 'center', fontSize: 18 }}>Add to Cart</Text>
